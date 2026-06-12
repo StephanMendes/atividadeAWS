@@ -64,12 +64,9 @@ export default function FileList() {
   };
 
   return (
-    <div className="mt-8">
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="mt-8 max-w-5xl">
+      <div className="overflow-hidden rounded-2xl border border-slate-200  shadow-sm">
         <div className="border-b border-slate-200 px-6 py-4">
-          <h2 className="text-lg font-semibold text-slate-900">
-            Arquivos armazenados
-          </h2>
           <p className="text-sm text-slate-500">{files.length} arquivo(s)</p>
         </div>
 
@@ -84,7 +81,7 @@ export default function FileList() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50">
+              <thead className="text-gray-300">
                 <tr>
                   <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Nome
@@ -97,36 +94,29 @@ export default function FileList() {
                   <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Data
                   </th>
-
-                  <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Ações
-                  </th>
                 </tr>
               </thead>
 
               <tbody className="divide-y divide-slate-100">
                 {files.map((file) => (
-                  <tr
-                    key={file.key}
-                    className="transition-colors hover:bg-slate-50"
-                  >
+                  <tr key={file.key} className="transition-colors ">
                     <td className="px-6 py-4">
-                      <span className="font-medium text-slate-900">
+                      <span className="font-bold text-gray-400">
                         {file.key}
                       </span>
                     </td>
 
-                    <td className="px-6 py-4 text-slate-600">
+                    <td className="px-6 py-4 text-gray-400">
                       {formatSize(file.size)}
                     </td>
 
-                    <td className="px-6 py-4 text-slate-600">
+                    <td className="px-6 py-4 text-gray-400">
                       {new Date(file.lastModified).toLocaleString("pt-BR")}
                     </td>
                     <td className="px-6 py-4 text-right ">
                       <button
                         onClick={() => openFile(file.key)}
-                        className="flex items-center justify-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-100"
+                        className="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium  transition text-gray-400 hover:bg-gray-800 cursor-pointer border"
                       >
                         <Eye size={16} />
                         Abrir
@@ -136,7 +126,7 @@ export default function FileList() {
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => remove(file.key)}
-                        className="inline-flex items-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-100"
+                        className="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium  transition text-gray-400 hover:bg-gray-800 cursor-pointer border"
                       >
                         <Trash2 size={16} />
                         Excluir
